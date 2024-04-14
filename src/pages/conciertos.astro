@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro"
+import {Image} from 'astro:assets'
+import thomb from '../assets/decoracion/tombstone.png'
+import { chivos,Concierto } from "../data/conciertos";
+import '@fontsource/unifrakturmaguntia';
+---
+
+<Layout title="Morbid Funeral - Conciertos">
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3"><span class="capital">P</span>róximos <span class="capital">C</span>onciertos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    <span class="capital">F</span>echa
+                </th>
+                <th>
+                    <span class="capital">L</span>ugar
+                </th>
+                <th>
+                    <span class="capital">P</span>rovincia
+                </th>
+                <th>
+                    <span class="capital">B</span>andas
+                </th>
+            </tr>
+
+    {
+        chivos.map((chivo:Concierto) =>(
+            <tr>
+                <td>
+                    {chivo.dia} de {chivo.mes} de {chivo.anio}
+                </td>
+
+                <td>
+                    {chivo.lugar} 
+                </td>
+                <td>
+                    {chivo.provincia}
+                </td>
+
+                <td>
+                    {chivo.bandas}
+                </td>
+            </tr>
+            <tr>
+
+
+            </tr>
+        ))
+    }
+           </tbody>
+        </table> 
+</Layout>
+
+<style>
+    table{
+        border: 1px solid white;
+        margin: 5px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    th{
+        font-size: 1em;
+        text-align: center;
+    }
+
+    td{
+        padding: 5px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #151515;
+    }
+
+    .capital{
+        font-family: 'UnifrakturMaguntia';
+        font-size: 1.5rem;
+    }
+
+</style>

@@ -1,0 +1,36 @@
+---
+const noticias = await Astro.glob("../pages/noticias/*.md");
+---
+
+{
+    noticias.reverse().map((noticia) => (
+        <div class="noticias">
+            <h2>{noticia.frontmatter.titulo}</h2>
+            <p class="fechaAutor">{noticia.frontmatter.dia}</p>
+            <p class="fechaAutor">{noticia.frontmatter.autor}</p>
+            <p set:html={noticia.compiledContent()} />
+            <hr>
+        </div>
+
+    ))
+}
+
+<style>
+
+    .noticias{
+        margin: 1em;
+    }
+    h2{
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    .fechaAutor{
+        font-size: 10px;
+    }
+
+    noticias-img{
+        display: flex;
+        justify-content: center;
+    }
+</style>

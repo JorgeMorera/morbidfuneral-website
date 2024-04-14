@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo/logo.png'
+import '@fontsource/unifrakturmaguntia';
+---
+
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="src/assets/logo/logoVector.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Morbid Funeral </title>
+	</head>
+	<body>
+		<main>
+			<div class="youtube">
+				<iframe width="100%" height="100% " src="https://www.youtube.com/embed/twF6Fgp9zM0?autoplay=1&mute=1&controls=0&loop=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; no-controls; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+			</div>
+			<Image src={logo} alt="logo" /> <br>
+			<a href="/principal"><span class="entrar">Entrar</span></a>
+		</main>
+
+	</body>
+</html>
+
+<style>
+
+	body{
+		background-color: black;
+		overflow: hidden;
+	}
+	a{
+		background-color: black;
+		opacity: 0.6;
+		padding: 0.2em;
+		color: #FFF;
+		border-radius: 5px;
+	}
+
+	main{
+		display: grid;
+		justify-content: center;
+		justify-items: center;
+		color: #FFF;
+		font-size: 6rem;
+		z-index: 1;
+	}
+
+	.youtube{
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+	}
+
+	.entrar{
+		font-family: 'UnifrakturMaguntia';
+	}
+</style>

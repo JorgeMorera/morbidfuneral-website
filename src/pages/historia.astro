@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro"
+const historia = await Astro.glob("../pages/historia/*.md");
+---
+
+<Layout title="Morbid Funeral - Historia">
+    {
+        historia.map((banda) =>(
+        <div class="historia">
+                    <p set:html={banda.compiledContent()} />
+        </div>
+
+
+        ))
+    }
+</Layout>
+
+<style>
+    .historia{
+        margin: 1em;
+        padding: 1em;
+    }
+</style>

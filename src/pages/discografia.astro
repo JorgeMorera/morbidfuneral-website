@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Discogs, Albumes} from '../data/discografia'
+const html = await Astro.slots.render('default');
+---
+
+<Layout title="Morbid Funeral - Discografia" >
+
+{Discogs.map((album:Albumes) =>(
+    <div class="discografia">
+    <img class="cover" src={album.portada} alt={`Portada de ${album.nombre}`} />
+    <h2>{album.nombre}</h2>
+    <div class="info">
+      <p>Tipo: {album.tipo}</p>
+      <p>Día de lanzamiento: {album.diaLanzamiento} {album.anioLanzamiento}</p>
+      <p>Tracks:</p>
+      <ol>
+        {album.canciones.map((cancion, index) => (
+          <li>{cancion}</li>
+        ))}
+    </ol>
+    </div>
+    <div class="reproductor">
+          <Fragment set:html={album.spotify} />
+    </div>
+
+  </div>
+  <br><br><hr>
+)
+
+)}
+
+</Layout>
+
+<style>
+
+  .discografia{
+    margin: 0.5em;
+    display: grid;
+    grid-template-columns: 20em auto;
+    grid-template-rows: auto auto auto;
+  }
+
+  .cover{
+    border: 3px solid black;
+    border-radius: 5px;
+    grid-column: 1 / 2;
+    width: 90%;
+    display: grid;
+  }
+
+  h2{
+    grid-row: 1 / 1;
+    grid-column: 1 / 3;
+    display: grid;
+    justify-content: center;
+  }
+
+
+
+
+
+  .reproductor{
+    padding-top: 1em;
+    grid-column: 1 / 3;
+    grid-row: 3 / 3;
+  }
+
+
+
+</style>
